@@ -1,6 +1,6 @@
-log4cplus.rootLogger=DEBUG, KvsConsoleAppender, KvsFileAppender
+log4cplus.rootLogger=ERROR, KvsConsoleAppender, KvsFileAppender
 
-#log4cplus.logger.MemoryCheck=TRACE, KvsConsoleAppender
+#log4cplus.logger.MemoryCheck=ERROR, KvsConsoleAppender
 
 #KvsConsoleAppender:
 log4cplus.appender.KvsConsoleAppender=log4cplus::ConsoleAppender

@@ -33,27 +33,27 @@ bool KinesisVideoStream::putFrame(KinesisVideoFrame frame) const {
 
     // Print metrics on every key-frame
     // TODO: this will create too much spam in case of audio
-    if (CHECK_FRAME_FLAG_KEY_FRAME(frame.flags)) {
-        // Extract metrics and print out
-        auto stream_metrics = getMetrics();
-        auto client_metrics = kinesis_video_producer_.getMetrics();
-        auto total_transfer_tate = 8 * client_metrics.getTotalTransferRate();
-        auto transfer_rate = 8 * stream_metrics.getCurrentTransferRate();
+    // if (CHECK_FRAME_FLAG_KEY_FRAME(frame.flags)) {
+    //     // Extract metrics and print out
+    //     auto stream_metrics = getMetrics();
+    //     auto client_metrics = kinesis_video_producer_.getMetrics();
+    //     auto total_transfer_tate = 8 * client_metrics.getTotalTransferRate();
+    //     auto transfer_rate = 8 * stream_metrics.getCurrentTransferRate();
 
-        LOG_DEBUG("Kinesis Video client and stream metrics"
-                          << "\n\t>> Overall storage byte size: " << client_metrics.getContentStoreSizeSize()
-                          << "\n\t>> Available storage byte size: " << client_metrics.getContentStoreAvailableSize()
-                          << "\n\t>> Allocated storage byte size: " << client_metrics.getContentStoreAllocatedSize()
-                          << "\n\t>> Total view allocation byte size: " << client_metrics.getTotalContentViewsSize()
-                          << "\n\t>> Total streams frame rate (fps): " << client_metrics.getTotalFrameRate()
-                          << "\n\t>> Total streams transfer rate (bps): " <<  total_transfer_tate << " (" << total_transfer_tate / 1024 << " Kbps)"
-                          << "\n\t>> Current view duration (ms): " << stream_metrics.getCurrentViewDuration().count()
-                          << "\n\t>> Overall view duration (ms): " << stream_metrics.getOverallViewDuration().count()
-                          << "\n\t>> Current view byte size: " << stream_metrics.getCurrentViewSize()
-                          << "\n\t>> Overall view byte size: " << stream_metrics.getOverallViewSize()
-                          << "\n\t>> Current frame rate (fps): " << stream_metrics.getCurrentFrameRate()
-                          << "\n\t>> Current transfer rate (bps): " << transfer_rate << " (" << transfer_rate / 1024 << " Kbps)");
-    }
+    //     LOG_DEBUG("Kinesis Video client and stream metrics"
+    //                       << "\n\t>> Overall storage byte size: " << client_metrics.getContentStoreSizeSize()
+    //                       << "\n\t>> Available storage byte size: " << client_metrics.getContentStoreAvailableSize()
+    //                       << "\n\t>> Allocated storage byte size: " << client_metrics.getContentStoreAllocatedSize()
+    //                       << "\n\t>> Total view allocation byte size: " << client_metrics.getTotalContentViewsSize()
+    //                       << "\n\t>> Total streams frame rate (fps): " << client_metrics.getTotalFrameRate()
+    //                       << "\n\t>> Total streams transfer rate (bps): " <<  total_transfer_tate << " (" << total_transfer_tate / 1024 << " Kbps)"
+    //                       << "\n\t>> Current view duration (ms): " << stream_metrics.getCurrentViewDuration().count()
+    //                       << "\n\t>> Overall view duration (ms): " << stream_metrics.getOverallViewDuration().count()
+    //                       << "\n\t>> Current view byte size: " << stream_metrics.getCurrentViewSize()
+    //                       << "\n\t>> Overall view byte size: " << stream_metrics.getOverallViewSize()
+    //                       << "\n\t>> Current frame rate (fps): " << stream_metrics.getCurrentFrameRate()
+    //                       << "\n\t>> Current transfer rate (bps): " << transfer_rate << " (" << transfer_rate / 1024 << " Kbps)");
+    // }
 
     return true;
 }
